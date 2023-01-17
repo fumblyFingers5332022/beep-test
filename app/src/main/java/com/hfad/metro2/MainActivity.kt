@@ -27,6 +27,12 @@ class MainActivity : AppCompatActivity() {
 
         var running: Boolean = false
 
+        val toneGen1 = ToneGenerator(AudioManager.STREAM_MUSIC, 100)
+        toneGen1.startTone(ToneGenerator.TONE_CDMA_PIP, 150)
+
+        /**
+         *
+         * EARLIER RUNNABLE WITH audio file
 
         //  check out the tones from tone generator
         val toneGen1 = ToneGenerator(AudioManager.STREAM_MUSIC, 100)
@@ -52,6 +58,8 @@ class MainActivity : AppCompatActivity() {
                 handler.postDelayed(this, 800)
             }
         }
+
+        **/
 
         val textOne: TextView = findViewById(R.id.textView)
 
