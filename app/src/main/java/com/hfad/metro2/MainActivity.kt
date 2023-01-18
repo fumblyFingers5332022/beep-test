@@ -29,6 +29,14 @@ class MainActivity : AppCompatActivity() {
 
         val toneGen1 = ToneGenerator(AudioManager.STREAM_MUSIC, 100)
         toneGen1.startTone(ToneGenerator.TONE_CDMA_PIP, 150)
+        val mediaPlayer = MediaPlayer.create(this, R.raw.al1)
+
+
+        // create audio track
+
+
+
+
 
         /**
          *
@@ -60,19 +68,32 @@ class MainActivity : AppCompatActivity() {
         }
 
         **/
-
         val textOne: TextView = findViewById(R.id.textView)
+
+        var offset: Long = 0
+        var timeStarted: Long = 0
 
         suspend fun blooper() {
             while(running) {
-                //mediaPlayer.start()
-                Log.i("START", "${time.toString()}")
-                toneGen1.startTone(ToneGenerator.TONE_CDMA_PIP, 150)
-                delay(1000)
-                Log.i("STOP", "HEY")
+
+                Log.i("START", "Bloop")
+
+                // get current time
+                timeStarted = System.currentTimeMillis()
+
+                toneGen1.startTone(ToneGenerator.TONE_CDMA_PIP, 50)
+
+                delay(1000 - (System.currentTimeMillis() - timeStarted) - 1)
+               //Log.i("STOP", offset.toString())
 
             }
         }
+
+        suspend fun beepSound() {
+            toneGen1.startTone(ToneGenerator.TONE_CDMA_PIP,150)
+        }
+
+
         // start and stop buttons.
         val buttonStart = findViewById<Button>(R.id.button)
         val buttonStop = findViewById<Button>(R.id.button2)
